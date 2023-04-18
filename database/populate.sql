@@ -29,12 +29,12 @@ VALUES
   (3, 'Pending'),
   (4, 'Closed');
 
-INSERT INTO DEPARTEMENTS (IDDEPARTEMENT, DEPARTEMENTS) VALUES 
-(1, 'Sales'),
-(2, 'Customer Support'),
-(3, 'Marketing'),
-(4, 'Engineering'),
-(5, 'Human Resources');
+INSERT INTO DEPARTEMENTS (IDDEPARTEMENT, DEPARTEMENTS, SINOPSE) VALUES 
+(1, 'Sales','Just sell sell sell'),
+(2, 'Customer Support', ' Need help i am here dont worry'),
+(3, 'Marketing','Marketing i will take your money please !!'),
+(4, 'Engineering', 'We are engenhering'),
+(5, 'Human Resources', 'We are here because humans are bad people');
 
 INSERT INTO TAGS (IDTAG, HASTAG_NAME) VALUES
 (1, 'billing'),
