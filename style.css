@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css?family=Lora:400,700|Poppins:400,700');
+body{
+    width: auto;
+    background-color: #d6e4eb;
+    margin: 0;
+    margin-left: 10em;
+    display: grid;
+    grid-template-rows: 8em 48em;
+}
+header{
+  background-color: rgb(252, 252, 252);
+  display: grid;
+  height: 8em;
+  width: auto;
+  grid-template-columns: 85% 15%;
+}
+h2{
+  padding: 1em;
+}
+header h2 a:before{
+  content: '\2630 ';
+  color: #0f3a63;
+  padding: 10px;
+  font-size: 30px;
+}
+a{
+  text-decoration: none;
+  color:#0f3a63;
+}
+#signup{
+  padding: 2em;
+}
+body > header #signup a:first-child {
+  border-right: 1px solid #0f3a63;
+}
+body > header #signup a {
+  padding: 0 1em;
+}
+
+body > header #signup a:first-child {
+  padding-left: 0;
+}
+#Tickets{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+#Tickets a{
+  background-color: #eff0f3;
+  margin: 10px;
+  margin-bottom: 0; 
+  padding: 3em;
+  border-bottom: 3px solid #bbc1d1;
+}
+.sidenav {
+    height: 100%; 
+    width: 10em; 
+    position: fixed;
+    z-index: 1; 
+    top: 0; 
+    left: 0;
+    background-color: #0f3a63;
+    overflow-x: hidden; 
+    display: grid;
+    grid-template-rows: 8em 8em 8em 8em 8em;
+  }
+  .sidenav a {
+    padding-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 25px;
+    font-family:Arial, Helvetica, sans-serif;
+    line-height: 5rem;
+    color: #bbb6b6;
+    display: block;
+  }
+
+  .sidenav a:hover {
+    color: white;
+    background-color: #455983;
+  }
+  .sidenav h1{
+    padding: 1rem;
+    color: white;
+    background-color: #25a33a;
+    margin:0;
+  }
+  .main {
+    margin-left: 160px;
+    padding: 0px 10px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+footer{
+  padding: 1em;
+}
