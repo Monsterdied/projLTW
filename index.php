@@ -27,7 +27,7 @@
     </header>
     <div class="sidenav">
         <h1>LTW</h1>
-        <a href="#">Tickets</a>
+        <a href="#">My Tickets</a>
         <?php if($_SESSION["User Status"] == "Admin"){ ?>        
           <a href="adminUserMonitoring.php">Admin</a>
           <?php
@@ -37,7 +37,7 @@
         <a href="#">Options</a>
         <a href="#">About</a>
     </div>
-      <section id="Tickets">
+      <section id="Departments">
       <?php 
         foreach($departments as $department){
           ?> <a href="#"><?=$department['DEPARTEMENTS']?></a><?php

@@ -13,6 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
+    <link href="style_user.css" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -20,7 +21,9 @@
         <element id="signup">
           <a href="register.html">Register</a>
           <a href="login.html">Login</a>
+          <h2>        <input id="searchUser" type="text" placeholder="search"></h2>
         </div>
+
     </header>
     <div class="sidenav">
         <h1>Admin</h1>
@@ -30,10 +33,15 @@
         <a href="#">Options</a>
         <a href="#">About</a>
     </div>
-      <section id="Tickets">
+      <section id="Users">
       <?php 
-        foreach($users as $user){
-          ?> <a href="#"><?=$user['NAME']?></a><?php
+        foreach($users as $user){ ?> 
+          <section id="User">
+          <div class="usernameClient"><?=$user['USERNAME']?></div>
+          <div class="nameClient"><?=$user['NAME']?></div>
+          <div class="typeClient"><?=$user['TYPE']?></div>
+          </section>
+        <?php
           }
         ?>
       </section>

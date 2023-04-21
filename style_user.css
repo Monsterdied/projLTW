@@ -1,0 +1,36 @@
+#Users{
+    display: flex;
+    flex-direction: column;
+    padding-top: 8em;
+    position:inherit;
+  }
+
+  #Users #User{
+    background-color: #eff0f3;
+    margin: 10px;
+    margin-bottom: 0; 
+    padding: 3em;
+    border-bottom: 3px solid #bbc1d1;
+    height: 2em;
+    display: flex;
+    flex-direction: row;
+
+  }
+  #Users #User .usernameClient::before{ 
+    content: "Username :";
+  }
+  #Users #User .nameClient::before{ 
+    content: "Name :";
+  }
+  #Users #User .usernameClient{ 
+    text-align: left;
+    flex-grow: 0.1;
+  }
+#Users > #User div{ 
+    flex-grow: 3;
+    text-align: center;
+  }
+  #Users #User .nameClient{ 
+    flex-grow: 3;
+
+  }
