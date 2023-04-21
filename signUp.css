@@ -11,8 +11,7 @@ body{
 header{
     padding-top: 5em;
     padding-bottom: 2em;
-    margin:auto;
-    width: 210px;
+    text-align: center;
 }
 .login{
     margin:auto;
