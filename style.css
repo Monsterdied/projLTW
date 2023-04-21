@@ -4,15 +4,14 @@ body{
     background-color: #d6e4eb;
     margin: 0;
     margin-left: 10em;
-    display: grid;
-    grid-template-rows: 8em 48em;
 }
 header{
   background-color: rgb(252, 252, 252);
   display: grid;
   height: 8em;
-  width: auto;
-  grid-template-columns: 85% 15%;
+  width: 100%;
+  grid-template-columns: 75% 25%;
+  position: fixed;
 }
 h2{
   padding: 1em;
@@ -41,15 +40,21 @@ body > header #signup a:first-child {
   padding-left: 0;
 }
 #Tickets{
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  padding-top: 8em;
+  position:inherit;
 }
-#Tickets a{
+#Tickets .Ticket{
   background-color: #eff0f3;
   margin: 10px;
   margin-bottom: 0; 
   padding: 3em;
   border-bottom: 3px solid #bbc1d1;
+  height: 2em;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 .sidenav {
     height: 100%; 
