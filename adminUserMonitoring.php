@@ -4,7 +4,7 @@
 
   $db = getDatabaseConnection();
   //$departments = getAllDepartments($db);
-  $users = getAllUsers($db);
+  $users = User::getAllUsersWithLimit($db,5);
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
     <link href="style_user.css" rel="stylesheet">
+
   </head>
   <body>
     <header>
@@ -22,6 +23,7 @@
           <a href="register.html">Register</a>
           <a href="login.html">Login</a>
           <h2>        <input id="searchUser" type="text" placeholder="search"></h2>
+          <script src="javascript/script.js"></script>
         </div>
 
     </header>
@@ -37,9 +39,9 @@
       <?php 
         foreach($users as $user){ ?> 
           <section id="User">
-          <div class="usernameClient"><?=$user['USERNAME']?></div>
-          <div class="nameClient"><?=$user['NAME']?></div>
-          <div class="typeClient"><?=$user['TYPE']?></div>
+          <div class="usernameClient"><?=$user->username?></div>
+          <div class="nameClient"><?=$user->name?></div>
+          <div class="typeClient"><?=$user->type?></div>
           </section>
         <?php
           }

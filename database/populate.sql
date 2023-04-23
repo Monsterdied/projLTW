@@ -1,14 +1,14 @@
-INSERT INTO USERS (IDUSER, NAME, USERNAME, PASSWORD, TYPE, BIO, PROFILE_PICK) VALUES 
-(1, 'John Smith', 'johnsmith', 'password123', 'AGENT', 'Customer support agent', 'https://example.com/profiles/johnsmith.jpg'),
-(2, 'Jane Doe', 'janedoe', 'password456', 'CLIENT', 'Customer', 'https://example.com/profiles/janedoe.jpg'),
-(3, 'David Lee', 'davidlee', 'password789', 'AGENT', 'Customer support agent', 'https://example.com/profiles/davidlee.jpg'),
-(4, 'Sarah Johnson', 'sarahjohnson', 'passwordabc', 'CLIENT', 'Customer', 'https://example.com/profiles/sarahjohnson.jpg'),
-(5, 'Alice Smith', 'alice', 'password', 'CLIENT', 'I love cats', 'https://example.com/profile_pic'),
-(6, 'Bob Johnson', 'bob', 'password', 'AGENT', 'I love dogs', 'https://example.com/profile_pic'),
-(7, 'Charlie Brown', 'charlie', 'password', 'CLIENT', 'I love birds', 'https://example.com/profile_pic'),
-(8, 'David Lee', 'david', 'password', 'AGENT', 'I love fish', 'https://example.com/profile_pic'),
-(9, 'Emily White', 'emily', 'password', 'CLIENT', 'I love rabbits', 'https://example.com/profile_pic'),
-(10, 'Frank Green', 'frank', 'password', 'AGENT', 'I love hamsters', 'https://example.com/profile_pic');
+INSERT INTO USERS (IDUSER, NAME, USERNAME, PASSWORD, TYPE, BIO, EMAIL ,PROFILE_PICK) VALUES 
+(1, 'John Smith', 'johnsmith', 'password123', 'AGENT', 'Customer support agent','ok@34.pt' ,'https://example.com/profiles/johnsmith.jpg'),
+(2, 'Jane Doe', 'janedoe', 'password456', 'CLIENT', 'Customer','ok@ui.pt', 'https://example.com/profiles/janedoe.jpg'),
+(3, 'David Lee', 'davidlee', 'password789', 'AGENT', 'Customer support agent','ok@up.pt', 'https://example.com/profiles/davidlee.jpg'),
+(4, 'Sarah Johnson', 'sarahjohnson', 'passwordabc', 'CLIENT', 'Customer','ok@u1i.pt', 'https://example.com/profiles/sarahjohnson.jpg'),
+(5, 'Alice Smith', 'alice', 'password', 'CLIENT', 'I love cats', 'ok@231231.pt','https://example.com/profile_pic'),
+(6, 'Bob Johnson', 'bob', 'password', 'AGENT', 'I love dogs', 'ok@u2i.pt','https://example.com/profile_pic'),
+(7, 'Charlie Brown', 'charlie', 'password', 'CLIENT', 'I love birds','o3@ui.pt', 'https://example.com/profile_pic'),
+(8, 'David Lee', 'david', 'password', 'AGENT', 'I love fish', 'ok@1i.pt','https://example.com/profile_pic'),
+(9, 'Emily White', 'emily', 'password', 'CLIENT', 'I love rabbits', 'o1@ui.pt','https://example.com/profile_pic'),
+(10, 'Frank Green', 'frank', 'password', 'AGENT', 'I love hamsters','o4@ui.pt', 'https://example.com/profile_pic');
 
 INSERT INTO DEPARTMENT_AGENT (IDAGENT, IDDEPARTEMENT)
 VALUES
