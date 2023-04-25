@@ -1,0 +1,53 @@
+.profile {
+    padding-top: 10em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .profileInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profileInfoName h1 {
+    font-size: 32px;
+    margin: 0;
+  }
+  
+  .profileInfoUsername h2 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .profileInfoType h3 {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .profileDepartments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profileDepartmentsTitle h1 {
+    font-size: 28px;
+    margin: 0;
+  }
+  
+  .profileDepartmentsList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profileDepartmentsListDepartment h2 {
+    font-size: 20px;
+    margin: 0;
+    padding: 10px;
+    border: 1px solid black;
+  }

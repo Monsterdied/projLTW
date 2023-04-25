@@ -1,5 +1,6 @@
 <?php  
-  session_start();
+  require_once(__DIR__ . '/util/session.php');
+  $session = new Session();
 ?>
 
 <?php
@@ -29,7 +30,7 @@
         <h1>LTW</h1>
         <a href="#">My Tickets</a>
         <?php if($_SESSION["User Status"] == "Admin"){ ?>        
-          <a href="adminUserMonitoring.php">Admin</a>
+          <a href="pages/adminUserMonitoring.php">Admin</a>
           <?php
           }
         ?>

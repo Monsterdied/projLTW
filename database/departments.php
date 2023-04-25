@@ -30,7 +30,7 @@ class Department {
     }
 
     
-    function getAllDepartmentsFromUserId(PDO $db,int $id){
+    function getAllDepartmentsFromUserId(PDO $db,int $id) : array{
         $stmt = $db->prepare('SELECT * FROM DEPARTMENT_AGENT WHERE IDAGENT = ?');
         $stmt->execute(array($id));
         $ids_of_departments = $stmt->fetchAll();

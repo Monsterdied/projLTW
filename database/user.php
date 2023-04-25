@@ -81,12 +81,12 @@
       return $users;
     }
 
-    static function getUser(PDO $db, string $id) : User {
-        $stmt = $db->prepare('SELECT * FROM USERS WHERE USERID = ?');
+    static function getUser(PDO $db, string $id) {
+        $stmt = $db->prepare('SELECT * FROM USERS WHERE IDUSER = ?');
         $stmt->execute(array($id));
       
         $user = $stmt->fetch();
-      
+      if($user != null)
         return new User(
             $user['IDUSER'],
             $user['NAME'],
@@ -95,8 +95,9 @@
             $user['PASSWORD'],
             $user['BIO'] == NULL ? $user['BIO'] :"",
             $user['TYPE'],
-            $user['PROFILEPICK'] == NULL? $user['PROFILE_PICK'] :""
+            $user['PROFILE_PICK'] == NULL? $user['PROFILE_PICK'] :""
         );
+        return null;
       }
   }
 
