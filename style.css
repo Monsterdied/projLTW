@@ -10,7 +10,8 @@ header{
   display: grid;
   height: 8em;
   width: 100%;
-  grid-template-columns: 75% 25%;
+  grid-template-columns: 50% 50%;
+
   position: fixed;
 }
 h2{
@@ -27,6 +28,8 @@ a{
   color:#0f3a63;
 }
 #signup{
+  align-content: end;
+  
   padding: 2em;
 }
 body > header #signup a:first-child {

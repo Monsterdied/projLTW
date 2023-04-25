@@ -55,12 +55,31 @@
           $user['PASSWORD'],
           $user['BIO'] == NULL ? $user['BIO'] :"",
           $user['TYPE'],
-          $user['PROFILEPICK'] == NULL? $user['PROFILE_PICK'] :""
+          $user['PROFILE_PICK'] == NULL? $user['PROFILE_PICK'] :""
         );
       }
       return $users;
     }
 
+    static function searchUsersByUser_username(PDO $db, string $search, int $count) : array {
+      $stmt = $db->prepare('SELECT * FROM USERS WHERE USERNAME LIKE ? LIMIT ?');
+      $stmt->execute(array($search . '%', $count));
+  
+      $users = array();
+      while ($user = $stmt->fetch()) {
+        $users[] = new User(
+          $user['IDUSER'],
+          $user['NAME'],
+          $user['USERNAME'],
+          $user['EMAIL'],
+          $user['PASSWORD'],
+          $user['BIO'] == NULL ? $user['BIO'] :"",
+          $user['TYPE'],
+          $user['PROFILE_PICK'] == NULL? $user['PROFILE_PICK'] :""
+        );
+      }
+      return $users;
+    }
 
     static function getUser(PDO $db, string $id) : User {
         $stmt = $db->prepare('SELECT * FROM USERS WHERE USERID = ?');

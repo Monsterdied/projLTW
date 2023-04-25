@@ -1,54 +1,48 @@
 <?php
-  require_once('database/connection.php');
-  require_once('database/user.php');
+  require_once(__DIR__ . '/util/session.php');
+  $session = new Session();
+  require_once(__DIR__ . '/database/connection.php');
+  require_once(__DIR__ . '/database/departments.php');
+  require_once(__DIR__ . '/database/user.php');
 
+  require_once(__DIR__ . '/templates/common.php');
+  require_once(__DIR__ . '/templates/commonAdmin.php');
   $db = getDatabaseConnection();
   //$departments = getAllDepartments($db);
-  $users = User::getAllUsersWithLimit($db,5);
-?>
-<!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <title>Admin</title>    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet">
-    <link href="style_user.css" rel="stylesheet">
+  $users = User::getAllUsersWithLimit($db,8);
+  $_SESSION['name'] = "Tomas Sarmento";
 
-  </head>
-  <body>
-    <header>
-        <h2><a href="main.html">All Tickets</a></h2>
-        <element id="signup">
-          <a href="register.html">Register</a>
-          <a href="login.html">Login</a>
-          <h2>        <input id="searchUser" type="text" placeholder="search"></h2>
-          <script src="javascript/script.js"></script>
-        </div>
+  drawHeader($session);
+  drawSidebarADMIN($session);
+  ?>
 
-    </header>
-    <div class="sidenav">
-        <h1>Admin</h1>
-        <a href="\">Home</a>
-        <a href="#">Tickets</a>
-        <a href="#">Users</a>
-        <a href="#">Options</a>
-        <a href="#">About</a>
+    <div class = "searchfield">        
+            <input id="searchUser" type="text" placeholder="search">
+            <select name="searchUserBy" id="searchUserBy">
+              <option value="username">username</option>
+              <option value="name">name</option>
+            </select>
     </div>
-      <section id="Users">
+    <script src="javascript/script.js"></script>
+    <section id="Users">
       <?php 
-        foreach($users as $user){ ?> 
+        foreach($users as $user){  
+        $departments = getAllDepartmentsFromUserId($db, $user->id);?>
           <section id="User">
-          <div class="usernameClient"><?=$user->username?></div>
-          <div class="nameClient"><?=$user->name?></div>
-          <div class="typeClient"><?=$user->type?></div>
+            <div class="usernameClient"><?=$user->username?></div>
+            <div class="nameClient"><?=$user->name?></div>
+            <div class="typeClient"><?=$user->type?></div>
+            <ul>
+            <?php foreach($departments as $department){?>
+              <li><?=$department->name?></li>
+
+              <?php } ?>
+            </ul>
           </section>
         <?php
           }
         ?>
-      </section>
-      <footer>
-        <p>&copy; LTW, 2023</p>
-      </footer>
-  </body>
-</html>
+    </section>
+<?php
+  drawFooter($session);
+  ?>

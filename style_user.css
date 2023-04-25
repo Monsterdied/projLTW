@@ -1,7 +1,6 @@
 #Users{
     display: flex;
     flex-direction: column;
-    padding-top: 8em;
     position:inherit;
   }
 
@@ -12,8 +11,8 @@
     padding: 3em;
     border-bottom: 3px solid #bbc1d1;
     height: 2em;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
 
   }
   #Users #User .usernameClient::before{ 
@@ -24,13 +23,10 @@
   }
   #Users #User .usernameClient{ 
     text-align: left;
-    flex-grow: 0.1;
   }
 #Users > #User div{ 
-    flex-grow: 3;
     text-align: center;
   }
   #Users #User .nameClient{ 
-    flex-grow: 3;
 
   }
