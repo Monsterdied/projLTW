@@ -17,10 +17,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
+    <link href="ticket.css" rel="stylesheet">
   </head>
   <body>
     <header>
-        <h2><a href="main.html">All Tickets</a></h2>
+        <h2><a href="index.php">All Tickets</a></h2>
         <element id="signup">
           <a href="register.html">Register</a>
           <a href="login.html">Login</a>
@@ -38,6 +39,36 @@
         <a href="#">Options</a>
         <a href="#">About</a>
     </div>
+    <section id="Tickets">
+        <div class="Ticket"> 
+          <div class="clientPicture"><img src="https://picsum.photos/600/300?business" alt=""></div>
+          <div class="nameTicket">Ticket Name</div>
+          <div class="statusNew">New</div>
+          <div class="nameClient">Name of Client</div>
+          <div class="departments">Departments</div>
+        </div>
+        <div class="Ticket"> 
+          <div class="clientPicture"><img src="https://picsum.photos/600/300?business" alt=""></div>
+          <div class="nameTicket">Ticket Name</div>
+          <div class="statusResponded">Client Responded</div>
+          <div class="nameClient">Name of Client</div>
+          <div class="departments">Departments</div>
+        </div>
+        <div class="Ticket"> 
+          <div class="clientPicture"><img src="https://picsum.photos/600/300?business" alt=""></div>
+          <div class="nameTicket">Ticket Name</div>
+          <div class="statusResponded">ClientResponded</div>
+          <div class="nameClient">Name of Client</div>
+          <div class="departments">Departments</div>
+        </div>
+        <div class="Ticket"> 
+          <div class="clientPicture"><img src="https://picsum.photos/600/300?business" alt=""></div>
+          <div class="nameTicket">Ticket Name</div>
+          <div class="statusNew">New</div>
+          <div class="nameClient">Name of Client</div>
+          <div class="departments">Departments</div>
+        </div>
+      </section>
       <section id="Departments">
       <?php 
         foreach($departments as $department){
