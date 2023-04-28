@@ -111,9 +111,23 @@
 
     $stmt->execute(array($password,$this->id));
   }
-
-  function addUser( string $name,string $username,string $email,string $password){
-
+  function checkUser(PDO $db,string $username , string $password){
+    $stmt = $db->prepare('SELECT * FROM users WHERE username = ?');
+    $stmt->execute(array($username));
+    $user = $stmt->fetch();
+    if ($user && password_verify($password, $user['password'])) {
+      $_SESSION['username'] = $username;
+  }
+  }
+  function addUser( PDO $db,string $username,string $email,string $password){
+    $options = ['cost' => 12];
+    $stmt = $db->prepare('INSERT INTO USERS VALUES (?, ?, ?, ?, ?, ?)');
+    $stmt->execute(array(
+      $username,
+      $email,
+      $username,
+      password_hash($password, PASSWORD_DEFAULT, $options),'Client','','')
+    );
   }
 }
 ?>

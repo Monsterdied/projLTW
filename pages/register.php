@@ -12,20 +12,41 @@
         </div>
     </header>
     <div class="main">
-        <div class="Register">
+        <form action = "/../actions/action_register.php" method = "post">
             <div class="item1">Username</div>
-            <div class="item2"><input type="text" id="user" name="user"><br><br></div>
+            <div class="item2"><input type="text" id="user" name="username"><br><br></div>
             <div class="item1">Name</div>
-            <div class="item2"><input type="text" id="user" name="user"><br><br></div>
+            <div class="item2"><input type="text" id="user" name="User_Name"><br><br></div>
             <div class="item1">Email address</div>
-            <div class="item2"><input type="text" id="user" name="user"><br><br></div>
+            <div class="item2"><input type="text" id="user" name="user_Email"><br><br></div>
             <div class="item3">Password</div>  
-            <div class="item5"><input type="text" id="password" name="password"><br><br></div>
-            <div class="item6"><button>Sign up</button></div>    
-        </div>
+            <div class="item5"><input type="text" id="password" name="User_passwor"><br><br></div>
+            <button type = "submit" onclick = "window.location.href='index.php'">Sign up</button></div>  
+        </form>
     </div>    
     <footer>
         <p>&copy; LTW, 2023</p>
     </footer>
+  	<script>
+    function validate() {
+        var $valid = true;
+        document.getElementById("user_info").innerHTML = "";
+        document.getElementById("password_info").innerHTML = "";
+        
+        var userName = document.getElementById("user_name").value;
+        var password = document.getElementById("password").value;
+        if(userName == "") 
+        {
+            document.getElementById("user_info").innerHTML = "required";
+        	$valid = false;
+        }
+        if(password == "") 
+        {
+        	document.getElementById("password_info").innerHTML = "required";
+            $valid = false;
+        }
+        return $valid;
+    }
+    </script>
   </body>
 </html>

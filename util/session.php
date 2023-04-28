@@ -4,6 +4,8 @@
 
     public function __construct() {
       session_start();
+      $this->messages = isset($_SESSION['messages']) ? $_SESSION['messages'] : array();
+      unset($_SESSION['messages']);
 /*
       $this->messages = isset($_SESSION['messages']) ? $_SESSION['messages'] : array();
       unset($_SESSION['messages']);*/
@@ -38,13 +40,13 @@
     public function setType(string $type) {
         $_SESSION['type'] = $type;
       }
-/*
+
     public function addMessage(string $type, string $text) {
       $_SESSION['messages'][] = array('type' => $type, 'text' => $text);
     }
 
     public function getMessages() {
       return $this->messages;
-    }*/
+    }
   }
 ?>
