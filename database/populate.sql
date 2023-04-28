@@ -10,7 +10,7 @@ INSERT INTO USERS (IDUSER, NAME, USERNAME, PASSWORD, TYPE, BIO, EMAIL ,PROFILE_P
 (9, 'Emily White', 'emily', 'password', 'CLIENT', 'I love rabbits', 'o1@ui.pt','https://example.com/profile_pic'),
 (10, 'Frank Green', 'frank', 'password', 'AGENT', 'I love hamsters','o4@ui.pt', 'https://example.com/profile_pic');
 
-INSERT INTO DEPARTMENT_AGENT (IDAGENT, IDDEPARTEMENT)
+INSERT INTO DEPARTMENT_AGENT (IDAGENT, IDDEPARTMENT)
 VALUES
 (1, 1),
 (3, 1),
@@ -25,11 +25,11 @@ VALUES
 INSERT INTO STATUS (IDSTATUS, STATUS)
 VALUES
   (1, 'Open'),
-  (2, 'In Progress'),
+  (2, 'In Progress'), 
   (3, 'Pending'),
   (4, 'Closed');
 
-INSERT INTO DEPARTEMENTS (IDDEPARTEMENT, DEPARTEMENTS, SINOPSE) VALUES 
+INSERT INTO DEPARTMENTS (IDDEPARTMENT, DEPARTMENT_NAME, SINOPSE) VALUES 
 (1, 'Sales','Just sell sell sell'),
 (2, 'Customer Support', ' Need help i am here dont worry'),
 (3, 'Marketing','Marketing i will take your money please !!'),
@@ -44,13 +44,13 @@ INSERT INTO TAGS (IDTAG, HASTAG_NAME) VALUES
 (5, 'technical'),
 (6, 'installation');
 
-INSERT INTO FAQS (IDFAQ, QUESTION, ANSWER, IDTICKET, IDAGENT)
+INSERT INTO FAQS (IDFAQ, QUESTION, ANSWER)
 VALUES
-  (1, 'What is the status of my order?', 'Your order is currently being processed and will be shipped within 3-5 business days.', 1, 2),
-  (2, 'How do I track my package?', 'You can track your package by entering the tracking number on our website.', 2, 3),
-  (3, 'What is your return policy?', 'We accept returns within 30 days of purchase. Please contact customer service to initiate a return.', 3, 1);
+  (1, 'What is the status of my order?', 'Your order is currently being processed and will be shipped within 3-5 business days.'),
+  (2, 'How do I track my package?', 'You can track your package by entering the tracking number on our website.'),
+  (3, 'What is your return policy?', 'We accept returns within 30 days of purchase. Please contact customer service to initiate a return.');
 
-INSERT INTO TICKETS (IDTICKET, PUBLISHED_TIME, CONTENT, IDSTATUS, IDCLIENT, IDAGENT, IDDEPARTEMENT)
+INSERT INTO TICKETS (IDTICKET, PUBLISHED_TIME, CONTENT, IDSTATUS, IDCLIENT, IDAGENT, IDDEPARTMENT)
 VALUES
 (1, 1642333800, 'I have a problem with my account', 1, 2, 1, 1),
 (2, 1642381200, 'My order was not delivered', 2, 4, 3, 2),

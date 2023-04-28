@@ -6,17 +6,15 @@
     public string $name;
     public string $username;
     public string $email;
-    public string $password;
     public string $type;
     public string $bio;
     public string $profilepick;
-    public function __construct(string $id, string $name,string $username,string $email,string $password,string $bio,string $type ,string $profilepick)
+    public function __construct(string $id, string $name,string $username,string $email,string $bio,string $type ,string $profilepick)
     { 
     $this->id = $id;
     $this->name = $name;
     $this->username = $username;
     $this->email = $email;
-    $this->password = $password;
     $this->bio = $bio;
     $this->type = $type;
     $this->profilepick = $profilepick;
@@ -32,7 +30,6 @@
             $user['NAME'],
             $user['USERNAME'],
             $user['EMAIL'],
-            $user['PASSWORD'],
             $user['BIO'] == NULL ? $user['BIO'] :"",
             $user['TYPE'],
             $user['PROFILE_PICK'] == NULL? $user['PROFILE_PICK'] :""
@@ -52,7 +49,6 @@
           $user['NAME'],
           $user['USERNAME'],
           $user['EMAIL'],
-          $user['PASSWORD'],
           $user['BIO'] == NULL ? $user['BIO'] :"",
           $user['TYPE'],
           $user['PROFILE_PICK'] == NULL? $user['PROFILE_PICK'] :""
@@ -72,7 +68,6 @@
           $user['NAME'],
           $user['USERNAME'],
           $user['EMAIL'],
-          $user['PASSWORD'],
           $user['BIO'] == NULL ? $user['BIO'] :"",
           $user['TYPE'],
           $user['PROFILE_PICK'] == NULL? $user['PROFILE_PICK'] :""
@@ -92,7 +87,6 @@
             $user['NAME'],
             $user['USERNAME'],
             $user['EMAIL'],
-            $user['PASSWORD'],
             $user['BIO'] == NULL ? $user['BIO'] :"",
             $user['TYPE'],
             $user['PROFILE_PICK'] == NULL? $user['PROFILE_PICK'] :""
@@ -100,7 +94,23 @@
         return null;
       }
   }
+  //NAO ESTA TESTADA ESTA FUNÇÃO
+  function save(PDO $db) {
+    $stmt = $db->prepare('
+      UPDATE Users SET NAME = ? , SET USERNAME = ? , SET EMAIL = ? , SET BIO = ? , SET TYPE = ? , SET PROFILE_PICK = ? ,
+      WHERE IDUSER = ?
+    ');
 
+    $stmt->execute(array($this->name, $this->username,$this->email,$this->bio, $this->type,$this->profilepick,$this->id));
+  }
 
+  function change_Password(PDO $db, string $password) {
+    $stmt = $db->prepare('
+      UPDATE Users SET PASSWORD = ? ,
+      WHERE IDUSER = ?
+    ');
+
+    $stmt->execute(array($password,$this->id));
+  }
 
 ?>

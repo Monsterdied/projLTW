@@ -14,20 +14,20 @@ class Department {
 
   }
 
-}
-    function getAllDepartments(PDO $db) : array {
-    $stmt = $db->prepare('SELECT * FROM DEPARTEMENTS');
-    $departments=$stmt->execute();
+  function getAllDepartments(PDO $db) : array {
+    $stmt = $db->prepare('SELECT * FROM DEPARTMENTS');
+    $stmt->execute();
+    $departments = $stmt->fetchAll();
     $result = array();
     foreach($departments as $department){
         $result[] = new Department(
-            $department['IDDEPARTEMENT'],
-            $department['DEPARTEMENTS'],
+            $department['IDDEPARTMENT'],
+            $department['DEPARTMENT_NAME'],
             $department['SINOPSE']
         );
     }
     return $result;
-    }
+}
 
     
     function getAllDepartmentsFromUserId(PDO $db,int $id) : array{
@@ -36,15 +36,16 @@ class Department {
         $ids_of_departments = $stmt->fetchAll();
         $result = array();
         foreach($ids_of_departments as $id_of_department){
-            $stmt = $db->prepare('SELECT * FROM DEPARTEMENTS WHERE IDDEPARTEMENT = ?');
-            $stmt->execute(array($id_of_department['IDDEPARTEMENT']));
+            $stmt = $db->prepare('SELECT * FROM DEPARTMENTS WHERE IDDEPARTMENT = ?');
+            $stmt->execute(array($id_of_department['IDDEPARTMENT']));
             $department = $stmt->fetch();
             $result[] = new Department(
-                $department['IDDEPARTEMENT'],
-                $department['DEPARTEMENTS'],
+                $department['IDDEPARTMENT'],
+                $department['DEPARTMENT_NAME'],
                 $department['SINOPSE']
             );
         }
         return $result;
         }
+    }
 ?>

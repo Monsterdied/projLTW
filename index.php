@@ -5,10 +5,12 @@
 
 <?php
   require_once('database/connection.php');
+  require_once('database/ticket.php');
   require_once('database/departments.php');
   $_SESSION["User Status"] = "Admin";
   $db = getDatabaseConnection();
-  $departments = getAllDepartments($db);
+  $departments = Department::getAllDepartments($db);
+  $tickets = Ticket::getTickets($db ,0,10);
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -40,39 +42,21 @@
         <a href="#">About</a>
     </div>
     <section id="Tickets">
+          <?php foreach($tickets as $ticket){ ?>
         <div class="Ticket"> 
+
           <div class="clientPicture"><img src="https://picsum.photos/600/300?business" alt=""></div>
-          <div class="nameTicket">Ticket Name</div>
-          <div class="statusNew">New</div>
-          <div class="nameClient">Name of Client</div>
-          <div class="departments">Departments</div>
+          <div class="nameTicket"><?= $ticket->content ?></div>
+          <div class="statusNew"><?= $ticket->status->name ?></div>
+          <div class="nameClient"><?= $ticket->client->name ?></div>
+          <div class="departments"><?= $ticket->department->name ?></div>
         </div>
-        <div class="Ticket"> 
-          <div class="clientPicture"><img src="https://picsum.photos/600/300?business" alt=""></div>
-          <div class="nameTicket">Ticket Name</div>
-          <div class="statusResponded">Client Responded</div>
-          <div class="nameClient">Name of Client</div>
-          <div class="departments">Departments</div>
-        </div>
-        <div class="Ticket"> 
-          <div class="clientPicture"><img src="https://picsum.photos/600/300?business" alt=""></div>
-          <div class="nameTicket">Ticket Name</div>
-          <div class="statusResponded">ClientResponded</div>
-          <div class="nameClient">Name of Client</div>
-          <div class="departments">Departments</div>
-        </div>
-        <div class="Ticket"> 
-          <div class="clientPicture"><img src="https://picsum.photos/600/300?business" alt=""></div>
-          <div class="nameTicket">Ticket Name</div>
-          <div class="statusNew">New</div>
-          <div class="nameClient">Name of Client</div>
-          <div class="departments">Departments</div>
-        </div>
+        <?php } ?>
       </section>
       <section id="Departments">
       <?php 
         foreach($departments as $department){
-          ?> <a href="#"><?=$department['DEPARTEMENTS']?></a><?php
+          ?> <a href="#"><?=$department->name?></a><?php
           }
         ?>
       </section>
