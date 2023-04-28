@@ -1,10 +1,3 @@
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
 
 
 
@@ -32,11 +25,13 @@ if (searchUser) {
       const type = document.createElement('div')
       type.className = 'typeClient'
       type.textContent = User.type
-
+      const link = document.createElement('a')
+      link.href = "profile.php?userid=" +  User.id 
       section1.appendChild(username)
       section1.appendChild(name)
       section1.appendChild(type)
-      section.appendChild(section1)
+      link.appendChild(section1)
+      section.appendChild(link)
     }
   })
 }

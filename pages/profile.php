@@ -29,7 +29,7 @@
   drawHeader($session,"profile");
   drawSidebarADMIN($session);
   $user = User::getUser($db, $_GET['userid']);
-    $departments = getAllDepartmentsFromUserId($db,(int) $_GET['userid']);
+    $departments = Department::getAllDepartmentsFromUserId($db,(int) $_GET['userid']);
 ?>
 <div class = "profile">
   <div class = "profileInfo">

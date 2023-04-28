@@ -25,8 +25,8 @@
     <header>
         <h2><a href="index.php">All Tickets</a></h2>
         <element id="signup">
-          <a href="register.html">Register</a>
-          <a href="login.html">Login</a>
+          <a href="pages/register.php">Register</a>
+          <a href="pages/login.php">Login</a>
         </div>
     </header>
     <div class="sidenav">

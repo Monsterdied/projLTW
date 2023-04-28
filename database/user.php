@@ -93,14 +93,13 @@
         );
         return null;
       }
-  }
+
   //NAO ESTA TESTADA ESTA FUNÇÃO
   function save(PDO $db) {
     $stmt = $db->prepare('
       UPDATE Users SET NAME = ? , SET USERNAME = ? , SET EMAIL = ? , SET BIO = ? , SET TYPE = ? , SET PROFILE_PICK = ? ,
       WHERE IDUSER = ?
     ');
-
     $stmt->execute(array($this->name, $this->username,$this->email,$this->bio, $this->type,$this->profilepick,$this->id));
   }
 
@@ -113,4 +112,8 @@
     $stmt->execute(array($password,$this->id));
   }
 
+  function addUser( string $name,string $username,string $email,string $password){
+
+  }
+}
 ?>
