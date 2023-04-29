@@ -2,24 +2,24 @@
     padding-top: 10em;
     
     }
-    .searchfield {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-      }
-      
-      #searchUser {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        margin-right: 10px;
-        font-size: 16px;
-        flex-grow: 1;
-      }
-      
-      select {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-      }
+.searchfield {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  #searchUser {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+    flex-grow: 1;
+  }
+  
+  select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }

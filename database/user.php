@@ -1,6 +1,7 @@
 <?php
   declare(strict_types = 1);
-
+  require_once(__DIR__ . '/../util/session.php');
+  $session = new Session();
   class User {
     public string $id;
     public string $name;
@@ -93,6 +94,23 @@
         );
         return null;
       }
+      static function getUserByUsername(PDO $db, string $username) {
+        $stmt = $db->prepare('SELECT * FROM USERS WHERE USERNAME = ?');
+        $stmt->execute(array($username));
+      
+        $user = $stmt->fetch();
+      if($user != null)
+        return new User(
+            $user['IDUSER'],
+            $user['NAME'],
+            $user['USERNAME'],
+            $user['EMAIL'],
+            $user['BIO'] == NULL ? $user['BIO'] :"",
+            $user['TYPE'],
+            $user['PROFILE_PICK'] == NULL? $user['PROFILE_PICK'] :""
+        );
+        return null;
+      }
 
   //NAO ESTA TESTADA ESTA FUNÇÃO
   function save(PDO $db) {
@@ -111,22 +129,45 @@
 
     $stmt->execute(array($password,$this->id));
   }
-  function checkUser(PDO $db,string $username , string $password){
+  function checkUser(PDO $db,Session $session,string $username , string $password){
     $stmt = $db->prepare('SELECT * FROM users WHERE username = ?');
     $stmt->execute(array($username));
     $user = $stmt->fetch();
-    if ($user && password_verify($password, $user['password'])) {
-      $_SESSION['username'] = $username;
+    if($user != null){
+      if (password_verify($password, $user['PASSWORD'])) {
+        $session->setId((int)$user['IDUSER']);
+        $session->setName($user['NAME']);
+        $session->setType($user['TYPE']);
+      }
+    }
   }
+  function checkIfUserExists(PDO $db,string $username){
+    $stmt = $db->prepare('SELECT * FROM users WHERE username = ?');
+    $stmt->execute(array($username));
+    $user = $stmt->fetch();
+    if ($user) {
+      return true;
+    }
+    return false;
   }
-  function addUser( PDO $db,string $username,string $email,string $password){
+  function checkIfEmailExists(PDO $db,string $email){
+    $stmt = $db->prepare('SELECT * FROM users WHERE email = ?');
+    $stmt->execute(array($email));
+    $user = $stmt->fetch();
+    if ($user) {
+      return true;
+    }
+    return false;
+  }
+  
+  function addUser( PDO $db,string $username,string $name,string $email,string $password){
     $options = ['cost' => 12];
-    $stmt = $db->prepare('INSERT INTO USERS VALUES (?, ?, ?, ?, ?, ?)');
+    $stmt = $db->prepare('INSERT INTO USERS ( NAME, USERNAME, PASSWORD, TYPE, BIO, EMAIL ,PROFILE_PICK) VALUES (?, ?, ?, ?, ?, ?, ?)');
     $stmt->execute(array(
+      $name,
       $username,
-      $email,
-      $username,
-      password_hash($password, PASSWORD_DEFAULT, $options),'Client','','')
+      password_hash($password, PASSWORD_DEFAULT, $options),
+      'Client','',$email,'')
     );
   }
 }

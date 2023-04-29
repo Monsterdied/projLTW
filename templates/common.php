@@ -7,13 +7,14 @@
   <body>
     <header>
         <h2><a href="main.html"><?=$title?></a></h2>
-        <?php if($session->isLoggedIn()){ ?>
+        <?php if(!$session->isLoggedIn()){ ?>
         <element id="signup">
-          <a href="register.html">Register</a>
-          <a href="login.html">Login</a>
+          <a href="register.php">Register</a>
+          <a href="login.php">Login</a>
         </div><?php }else{ ?>
             <div class = "name_of_user">
             <?= $session->getName() ?>
+            <a href="/../actions/action_logout.php">Logout</a>
             </div>
             <?php }?>
         

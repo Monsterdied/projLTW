@@ -10,7 +10,6 @@
   $db = getDatabaseConnection();
   //$departments = getAllDepartments($db);
   $users = User::getAllUsersWithLimit($db,8);
-  $_SESSION['name'] = "Tomas Sarmento";
 ?>
     <!DOCTYPE html>
 <html lang="en-US">

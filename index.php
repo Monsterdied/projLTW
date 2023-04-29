@@ -7,7 +7,7 @@
   require_once('database/connection.php');
   require_once('database/ticket.php');
   require_once('database/departments.php');
-  $_SESSION["User Status"] = "Admin";
+  require_once('templates/common.php');
   $db = getDatabaseConnection();
   $departments = Department::getAllDepartments($db);
   $tickets = Ticket::getTickets($db ,0,10);
@@ -22,17 +22,25 @@
     <link href="ticket.css" rel="stylesheet">
   </head>
   <body>
+  <body>
     <header>
-        <h2><a href="index.php">All Tickets</a></h2>
+        <h2><a href="main.html"><?=$title?></a></h2>
+        <?php if(!$session->isLoggedIn()){ ?>
         <element id="signup">
           <a href="pages/register.php">Register</a>
           <a href="pages/login.php">Login</a>
-        </div>
+        </div><?php }else{ ?>
+            <div class = "name_of_user">
+            <?= $session->getName() ?>
+            <a href="/../actions/action_logout.php">Logout</a>
+            </div>
+            <?php }?>
+        
     </header>
     <div class="sidenav">
         <h1>LTW</h1>
         <a href="#">My Tickets</a>
-        <?php if($_SESSION["User Status"] == "Admin"){ ?>        
+        <?php if($session->getType() == "ADMIN"){ ?>        
           <a href="pages/adminUserMonitoring.php">Admin</a>
           <?php
           }
