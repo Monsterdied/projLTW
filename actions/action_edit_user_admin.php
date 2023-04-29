@@ -9,8 +9,10 @@
         $User_Name = filter_var($_POST["User_Name"], FILTER_SANITIZE_STRING);
         $User_bio = filter_var($_POST["User_Bio"], FILTER_SANITIZE_STRING);
         $User_Type = filter_var($_POST["User_Status"], FILTER_SANITIZE_STRING);
+        $check_boxes = $_POST["departments"];
         require_once (__DIR__ . "/../database/user.php");
         require_once (__DIR__ . "/../database/connection.php");
+        require_once (__DIR__ . "/../database/departments.php");
         $db = getDatabaseConnection();
         $old_user = User::getUser($db,$userID);
         $user = User::checkIfUserExists($db,$username);
@@ -25,6 +27,10 @@
             $session->addMessage("error", "email already exists");
             header("Location: /../pages/profile_edit_Admin.php?userid=$userID&error=email_already_exists");
             exit();
+        }
+        Department::deleteAllUserDepartments($db,$userID);
+        foreach($check_boxes as $check_box){
+            Department::addUserDepartment($db,$userID,$check_box);
         }
         $user_new = new User($userID,$User_Name,$username,$email_real,(string)$User_bio ,$User_Type,$old_user->profilepick);
         $user_new->save($db);

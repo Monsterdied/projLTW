@@ -64,10 +64,11 @@
                 }
               ?>
             </select>
+            <br><br>
             <?php foreach($Alldepartments as $department){?>
-              <input type="checkbox" name="departments[]" value=<?= $department->id ?> <?php if(in_array($department->id,$UserDepartments)){echo "checked";} ?>><?= $department->name ?><br>
-            <input type="hidden" name="User_id" value=<?=$user->id?>>
+              <input type="checkbox" name="departments[]" value=<?= $department->id ?> <?php if(in_array($department,$UserDepartments)){echo "checked";} ?>><?= $department->name ?><br>
             <?php } ?>
+            <input type="hidden" name="User_id" value=<?=$user->id?>>
             <?php foreach ($session->getMessages() as $messsage) { ?>
               <article class="<?=$messsage['type']?>">
                 <?=$messsage['text']?>

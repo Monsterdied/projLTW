@@ -47,5 +47,14 @@ class Department {
         }
         return $result;
         }
+
+    function deleteAllUserDepartments(PDO $db,int $id) {
+        $stmt = $db->prepare('DELETE FROM DEPARTMENT_AGENT WHERE IDAGENT = ?');
+        $stmt->execute(array($id));
     }
+    function addUserDepartment(PDO $db,int $User_id,int $Department_id) {
+        $stmt = $db->prepare("INSERT INTO DEPARTMENT_AGENT (IDDEPARTMENT, IDAGENT) VALUES (?, ?)");
+        $stmt->execute([$Department_id, $User_id]);
+    }
+}
 ?>

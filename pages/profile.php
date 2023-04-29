@@ -49,26 +49,37 @@
   </div>
   <div class = "profileDepartments">
     <div class = "profileDepartmentsTitle">
-
-    <?php if( $user->type == "CLIENT" && $user->type == "ADMIN"){ ?>
-
-      <h1>Departments</h1>
+    <?php if($user->bio != "") {?>
+  <div class = "Bio">
+    <h5>Bio</h5>
+    <h4><?=$user->bio ?></h4>
+    </div>
+    <?php } ?>
+    <?php if( $user->type != "CLIENT"){ ?>
+    
+      <h6>Departments</h6>
     </div>
     <div class = "profileDepartmentsList">
       <?php
         foreach($departments as $department){  ?>
           <div class = "profileDepartmentsListDepartment">
-            <h2><?=$department->name?></h2>
+            <h2><?=$department->name ?></h2>
           </div>
         <?php
           }
         ?>
             
     </div>  <?php } ?>
-    <?php if( $user->id == $session->getId()){ ?>
-      <form action="nextpage.php" method="POST">
-             
-        <input type="submit"/>
+    <?php if($session->getType() == "ADMIN"){ ?>
+      <form action="profile_edit_Admin.php" method="GET">
+        <input type="hidden" name="userid" value=<?=$user->id?>>          
+        <button  type = "submit" name = "login">Change</button>
+      </form>
+      <?php } ?>
+    <?php if( $user->id == $session->getId() && $session->getType() != "ADMIN"){ ?>
+      <form action="profile_edit_client.php" method="GET">
+        <input type="hidden" name="userid" value=<?=$user->id?>>          
+        <button  type = "submit" name = "login">Change</button>
       </form>
       <?php } ?>
   </div>    
