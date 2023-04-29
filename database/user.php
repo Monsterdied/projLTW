@@ -31,9 +31,9 @@
             $user['NAME'],
             $user['USERNAME'],
             $user['EMAIL'],
-            $user['BIO'] == NULL ? $user['BIO'] :"",
+            (string)  $user['BIO'] ,
             $user['TYPE'],
-            $user['PROFILE_PICK'] == NULL? $user['PROFILE_PICK'] :""
+            (string) $user['PROFILE_PICK']
           );
         }
         return $users;
@@ -50,9 +50,9 @@
           $user['NAME'],
           $user['USERNAME'],
           $user['EMAIL'],
-          $user['BIO'] == NULL ? $user['BIO'] :"",
+          (string) $user['BIO'],
           $user['TYPE'],
-          $user['PROFILE_PICK'] == NULL? $user['PROFILE_PICK'] :""
+          (string)  $user['PROFILE_PICK']
         );
       }
       return $users;
@@ -69,9 +69,9 @@
           $user['NAME'],
           $user['USERNAME'],
           $user['EMAIL'],
-          $user['BIO'] == NULL ? $user['BIO'] :"",
+          (string) $user['BIO'],
           $user['TYPE'],
-          $user['PROFILE_PICK'] == NULL? $user['PROFILE_PICK'] :""
+          (string)  $user['PROFILE_PICK']
         );
       }
       return $users;
@@ -88,9 +88,9 @@
             $user['NAME'],
             $user['USERNAME'],
             $user['EMAIL'],
-            $user['BIO'] == NULL ? $user['BIO'] :"",
+            (string) $user['BIO'],
             $user['TYPE'],
-            $user['PROFILE_PICK'] == NULL? $user['PROFILE_PICK'] :""
+            (string) $user['PROFILE_PICK']
         );
         return null;
       }
@@ -105,9 +105,9 @@
             $user['NAME'],
             $user['USERNAME'],
             $user['EMAIL'],
-            $user['BIO'] == NULL ? $user['BIO'] :"",
+            (string) $user['BIO'] ,
             $user['TYPE'],
-            $user['PROFILE_PICK'] == NULL? $user['PROFILE_PICK'] :""
+            (string) $user['PROFILE_PICK']
         );
         return null;
       }
@@ -115,7 +115,7 @@
   //NAO ESTA TESTADA ESTA FUNÇÃO
   function save(PDO $db) {
     $stmt = $db->prepare('
-      UPDATE Users SET NAME = ? , SET USERNAME = ? , SET EMAIL = ? , SET BIO = ? , SET TYPE = ? , SET PROFILE_PICK = ? ,
+      UPDATE Users SET NAME = ? , USERNAME = ? , EMAIL = ? ,BIO = ? , TYPE = ? , PROFILE_PICK = ? 
       WHERE IDUSER = ?
     ');
     $stmt->execute(array($this->name, $this->username,$this->email,$this->bio, $this->type,$this->profilepick,$this->id));
@@ -167,7 +167,7 @@
       $name,
       $username,
       password_hash($password, PASSWORD_DEFAULT, $options),
-      'Client','',$email,'')
+      'CLIENT','',$email,'')
     );
   }
 }

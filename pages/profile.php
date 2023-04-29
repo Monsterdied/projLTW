@@ -9,7 +9,6 @@
   require_once(__DIR__ . '/../templates/commonAdmin.php');
   $db = getDatabaseConnection();
   //$departments = getAllDepartments($db);
-  $_SESSION['name'] = "Tomas Sarmento";
 ?>
     <!DOCTYPE html>
 <html lang="en-US">
@@ -36,15 +35,29 @@
     <div class = "profileInfoName">
       <h1><?=$user->name?></h1>
     </div>
+
     <div class = "profileInfoUsername">
       <h2><?=$user->username?></h2>
+
+    </div>
+    <div class = "profileEmail">
+      <h3><?=$user->email?></h2>
     </div>
     <div class = "profileInfoType">
-      <h3><?=$user->type?></h3>
+      <h4><?=$user->type?></h3>
     </div>
   </div>
   <div class = "profileDepartments">
     <div class = "profileDepartmentsTitle">
+    <?php if($user->bio != "") {?>
+  <div class = "Bio">
+    <h5>Bio</h5>
+    <h4><?=$user->bio?></h4>
+    </div>
+    <?php } ?>
+    <?php if( $user->type == "CLIENT" && $user->type == "ADMIN"){ ?>
+      
+
       <h1>Departments</h1>
     </div>
     <div class = "profileDepartmentsList">
@@ -56,7 +69,20 @@
         <?php
           }
         ?>
-    </div>
+            
+    </div>  <?php } ?>
+    <?php if($session->getType() == "ADMIN"){ ?>
+      <form action="profile_edit_Admin.php" method="GET">
+        <input type="hidden" name="userid" value=<?=$user->id?>>          
+        <button  type = "submit" name = "login">Change</button>
+      </form>
+      <?php } ?>
+    <?php if( $user->id == $session->getId() && $session->getType() != "ADMIN"){ ?>
+      <form action="profile_edit_client.php" method="GET">
+        <input type="hidden" name="userid" value=<?=$user->id?>>          
+        <button  type = "submit" name = "login">Change</button>
+      </form>
+      <?php } ?>
   </div>    
 <?php
   drawFooter($session);

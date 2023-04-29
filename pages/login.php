@@ -23,7 +23,7 @@
             <div class="item2"><input type="text" id="username" name="username"><br><br></div>
             <div class="item3">Password</div>  
             <span id = "password_err"></span>
-            <div class="item5"><input type="text" id="User_password" name="User_password"><br><br></div>
+            <div class="item5"><input type="password" id="User_password" name="User_password"><br><br></div>
             <?php foreach ($session->getMessages() as $messsage) { ?>
               <article class="<?=$messsage['type']?>">
                 <?=$messsage['text']?>
