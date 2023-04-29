@@ -29,7 +29,8 @@
   drawHeader($session,"profile");
   drawSidebarADMIN($session);
   $user = User::getUser($db, $_GET["userid"]);
-    $departments = Department::getAllDepartmentsFromUserId($db,(int) $_GET["userid"]);
+    $UserDepartments = Department::getAllDepartmentsFromUserId($db,(int) $_GET["userid"]);
+    $Alldepartments = Department::getAllDepartments($db);
     if( !($session->getType() == "ADMIN" )){
       header("Location: ./profile.php?userid=" . $_GET["userid"]);
     }
@@ -50,7 +51,10 @@
             <span id = "User_Name_err"></span>
             <div class="item2"><input type="text" id="User_Bio" name="User_Bio" <?php echo "value=\"" . $user->bio . "\""; ?>><br><br></div>
             <select name="User_Status" id="User_Status">
+<?php 
 
+
+?>
               <option value=<?= $user->type ?>><?= $user->type ?></option>
               <?php 
                 foreach($user_Status as $status){
@@ -58,10 +62,12 @@
                     <option value=<?= $status ?>><?= $status ?></option>
                     <?php }
                 }
-              
               ?>
             </select>
+            <?php foreach($Alldepartments as $department){?>
+              <input type="checkbox" name="departments[]" value=<?= $department->id ?> <?php if(in_array($department->id,$UserDepartments)){echo "checked";} ?>><?= $department->name ?><br>
             <input type="hidden" name="User_id" value=<?=$user->id?>>
+            <?php } ?>
             <?php foreach ($session->getMessages() as $messsage) { ?>
               <article class="<?=$messsage['type']?>">
                 <?=$messsage['text']?>

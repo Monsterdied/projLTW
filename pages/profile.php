@@ -49,14 +49,8 @@
   </div>
   <div class = "profileDepartments">
     <div class = "profileDepartmentsTitle">
-    <?php if($user->bio != "") {?>
-  <div class = "Bio">
-    <h5>Bio</h5>
-    <h4><?=$user->bio?></h4>
-    </div>
-    <?php } ?>
+
     <?php if( $user->type == "CLIENT" && $user->type == "ADMIN"){ ?>
-      
 
       <h1>Departments</h1>
     </div>
@@ -71,16 +65,10 @@
         ?>
             
     </div>  <?php } ?>
-    <?php if($session->getType() == "ADMIN"){ ?>
-      <form action="profile_edit_Admin.php" method="GET">
-        <input type="hidden" name="userid" value=<?=$user->id?>>          
-        <button  type = "submit" name = "login">Change</button>
-      </form>
-      <?php } ?>
-    <?php if( $user->id == $session->getId() && $session->getType() != "ADMIN"){ ?>
-      <form action="profile_edit_client.php" method="GET">
-        <input type="hidden" name="userid" value=<?=$user->id?>>          
-        <button  type = "submit" name = "login">Change</button>
+    <?php if( $user->id == $session->getId()){ ?>
+      <form action="nextpage.php" method="POST">
+             
+        <input type="submit"/>
       </form>
       <?php } ?>
   </div>    
