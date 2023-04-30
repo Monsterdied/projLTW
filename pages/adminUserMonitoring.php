@@ -10,6 +10,9 @@
   $db = getDatabaseConnection();
   //$departments = getAllDepartments($db);
   $users = User::getAllUsersWithLimit($db,8);
+  if( !($session->getType() == "ADMIN" )){
+    header("Location: ./profile.php?userid=" . $_GET["userid"]);
+  }
 ?>
     <!DOCTYPE html>
 <html lang="en-US">

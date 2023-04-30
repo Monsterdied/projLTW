@@ -47,6 +47,16 @@ class Department {
         }
         return $result;
         }
+        function addDepartment(PDO $db,string $name) {
+            $stmt = $db->prepare("INSERT INTO DEPARTMENTS ( DEPARTMENT_NAME) VALUES ( ?)");
+            $stmt->execute([$name]);
+        }
+        function updateDepartment(PDO $db, int $DepartmentId,string $sinopse ,string $newName): bool {
+            $sql = "UPDATE DEPARTMENTS SET DEPARTMENT_NAME = ? , SINOPSE = ? WHERE IDDEPARTMENT = ?";
+            $stmt = $db->prepare($sql);
+            $stmt->execute([$newName,$sinopse, $DepartmentId]);
+            return $stmt->rowCount() > 0;
+        }
 
     function deleteAllUserDepartments(PDO $db,int $id) {
         $stmt = $db->prepare('DELETE FROM DEPARTMENT_AGENT WHERE IDAGENT = ?');

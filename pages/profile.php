@@ -28,6 +28,9 @@
   drawHeader($session,"profile");
   drawSidebarADMIN($session);
   $user = User::getUser($db, $_GET['userid']);
+  if(!$user){
+    header("Location: /../index.php");
+  }
     $departments = Department::getAllDepartmentsFromUserId($db,(int) $_GET['userid']);
 ?>
 <div class = "profile">
