@@ -31,7 +31,8 @@
           <a href="pages/login.php">Login</a>
         </div><?php }else{ ?>
             <div class = "name_of_user">
-            <?= $session->getName() ?>
+            <a href=<?="pages/profile.php?userid=" . $session->getId() ?> >
+            <?= $session->getName() ?></a>
             <a href="/../actions/action_logout.php">Logout</a>
             </div>
             <?php }?>
