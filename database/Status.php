@@ -15,7 +15,8 @@ class Status {
 
     function getAllStatus(PDO $db) : array {
     $stmt = $db->prepare('SELECT * FROM statuses');
-    $Statuses=$stmt->execute();
+    $stmt->execute();
+    $Statuses = $stmt->fetchAll();
     $result = array();
     foreach($Statuses as $Status){
         $result[] = new STATUS(

@@ -25,9 +25,6 @@
     <link href="../style_profile.css" rel="stylesheet">
   </head>
 <?php
-
-
-
   drawHeader($session,"profile");
   drawSidebarADMIN($session);
     $departments = Department::getAllDepartments($db);
