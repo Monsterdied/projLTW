@@ -9,7 +9,8 @@ INSERT INTO USERS ( NAME, USERNAME, PASSWORD, TYPE, BIO, EMAIL ,PROFILE_PICK) VA
 ( 'David Lee', 'david', 'password', 'AGENT', 'I love fish', 'ok@1i.pt','https://example.com/profile_pic'),
 ( 'Emily White', 'emily', 'password', 'CLIENT', 'I love rabbits', 'o1@ui.pt','https://example.com/profile_pic'),
 ( 'Frank Green', 'frank', 'password', 'AGENT', 'I love hamsters','o4@ui.pt', 'https://example.com/profile_pic'),
-( 'Tomas Sarmento', 'tomasarmento', '$2y$12$xQP8uMvRwSx90ppYikOELOGI0SIAg3HUJ8h493L8/vDSOv6Lu8N4m', 'ADMIN', 'I love hamsters','o4@ui.pt', 'https://example.com/profile_pic');
+( 'Tomas Sarmento', 'tomasarmento', '$2y$12$xQP8uMvRwSx90ppYikOELOGI0SIAg3HUJ8h493L8/vDSOv6Lu8N4m', 'ADMIN', 'I love hamsters','o4@ui.pt', 'https://example.com/profile_pic'),
+('testing','teste@test.pt','teste','$2y$12$euvP3YpFXw.umQycCaS3g.CDTAkx4qHwx3BaBe90oiIYO6fGhsXIG','ADMIN','','');
 
 INSERT INTO DEPARTMENT_AGENT (IDAGENT, IDDEPARTMENT)
 VALUES
