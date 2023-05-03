@@ -39,30 +39,30 @@
         <a href="#">Options</a>
         <a href="#">About</a>
     </div>
-    <section id="Tickets">
+    <section id="Container">
         <div class="Ticket"> 
-          <div class="clientPicture"><img src="https://picsum.photos/600/300?business" alt=""></div>
-          <div class="nameTicket">Ticket Name</div>
+          <div class="Picture"><img src="https://picsum.photos/600/300?business" alt=""></div>
+          <div class="nameTicket"><a href="pages/ticket.php">Ticket Name</a></div>
           <div class="statusNew">New</div>
           <div class="nameClient">Name of Client</div>
           <div class="departments">Departments</div>
         </div>
         <div class="Ticket"> 
-          <div class="clientPicture"><img src="https://picsum.photos/600/300?business" alt=""></div>
+          <div class="Picture"><img src="https://picsum.photos/600/300?business" alt=""></div>
           <div class="nameTicket">Ticket Name</div>
           <div class="statusResponded">Client Responded</div>
           <div class="nameClient">Name of Client</div>
           <div class="departments">Departments</div>
         </div>
         <div class="Ticket"> 
-          <div class="clientPicture"><img src="https://picsum.photos/600/300?business" alt=""></div>
+          <div class="Picture"><img src="https://picsum.photos/600/300?business" alt=""></div>
           <div class="nameTicket">Ticket Name</div>
-          <div class="statusResponded">ClientResponded</div>
+          <div class="statusResponded">Client Responded</div>
           <div class="nameClient">Name of Client</div>
           <div class="departments">Departments</div>
         </div>
         <div class="Ticket"> 
-          <div class="clientPicture"><img src="https://picsum.photos/600/300?business" alt=""></div>
+          <div class="Picture"><img src="https://picsum.photos/600/300?business" alt=""></div>
           <div class="nameTicket">Ticket Name</div>
           <div class="statusNew">New</div>
           <div class="nameClient">Name of Client</div>

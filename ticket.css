@@ -1,10 +1,10 @@
-#Tickets{
+#Container{
     display: flex;
     flex-direction: column;
     padding-top: 8em;
     position:inherit;
   }
-#Tickets .Ticket{
+#Container .Ticket{
     background-color: #eff0f3;
     height: 50px;
     margin: 10px;
@@ -18,11 +18,25 @@
     font-family:Arial, Helvetica, sans-serif;
     font-size: 17px;
 }
-.clientPicture{
+#Container .Message{
+    background-color: #eff0f3;
+    height: 50px;
+    margin: 10px;
+    margin-bottom: 0; 
+    padding: 2em;
+    border-bottom: 3px solid #bbc1d1;
+    display: grid;
+    line-height: 20px;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 70px 50% 50%;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 17px;
+}
+.Picture{
     grid-row-start: 1;
     grid-row-end: 3;
 }
-.clientPicture img{
+.Picture img{
     height: 50px;
     width: 50px;
 }
