@@ -52,14 +52,16 @@
     </div>
     <section id="Tickets">
           <?php foreach($tickets as $ticket){ ?>
-        <div class="Ticket"> 
+            <a href=<?="pages/ticket.php?TicketId=" .  $ticket->id ?>>
+              <div class="Ticket"> 
 
-          <div class="clientPicture"><img src="https://picsum.photos/600/300?business" alt=""></div>
-          <div class="nameTicket"><?= $ticket->content ?></div>
-          <div class="statusNew"><?= $ticket->status->name ?></div>
-          <div class="nameClient"><?= $ticket->client->name ?></div>
-          <div class="departments"><?= $ticket->department->name ?></div>
-        </div>
+                <div class="clientPicture"><img src="https://picsum.photos/600/300?business" alt=""></div>
+                <div class="nameTicket"><?= $ticket->content ?></div>
+                <div class="statusNew"><?= $ticket->status->name ?></div>
+                <div class="nameClient"><?= $ticket->client->name ?></div>
+                <div class="departments"><?= $ticket->department->name ?></div>
+              </div>
+            </a>
         <?php } ?>
       </section>
       <section id="Departments">
