@@ -75,6 +75,26 @@
   
       return $tickets;
     }
+    function getTimeDifference($timestamp) {
+      $delta = time() - $timestamp;
+      if ($delta < 60) {
+          return $delta . ' seconds ago';
+      } elseif ($delta < 3600) {
+          return round($delta / 60) . ' minutes ago';
+      } elseif ($delta < 86400) {
+          return round($delta / 3600) . ' hours ago';
+      } elseif ($delta < 2678400) {
+          return round($delta / 86400) . ' days ago';
+      } elseif ($delta < 31536000) {
+          return round($delta / 2678400) . ' months ago';
+      } elseif ($delta >= 31536000 && $delta < 63072000) {
+          return round($delta / 31536000) . ' year ago';
+      } elseif ($delta >= 63072000) {
+          return round($delta / 31536000) . ' years ago';
+      } else {
+          return 'A long time ago';
+      }
+  }
 
     function getTicketById( PDO $db ,int $TicketId) {  
       $query = "SELECT t.idticket AS IdTicket, t.published_time AS Published_Time, t.content AS Content, s.IDSTATUS AS status_id, s.status AS status_name, 
@@ -122,44 +142,6 @@
         return $ticket;
     }
 
-    static function searchUsersByUser_username(PDO $db, string $search, int $count) : array {
-      $stmt = $db->prepare('SELECT * FROM USERS WHERE USERNAME LIKE ? LIMIT ?');
-      $stmt->execute(array($search . '%', $count));
-  
-      $users = array();
-      while ($user = $stmt->fetch()) {
-        $users[] = new User(
-          $user['IDUSER'],
-          $user['NAME'],
-          $user['USERNAME'],
-          $user['EMAIL'],
-          $user['PASSWORD'],
-          $user['BIO'] == NULL ? $user['BIO'] :"",
-          $user['TYPE'],
-          $user['PROFILE_PICK'] == NULL? $user['PROFILE_PICK'] :""
-        );
-      }
-      return $users;
-    }
-
-    static function getUser(PDO $db, string $id) {
-        $stmt = $db->prepare('SELECT * FROM USERS WHERE IDUSER = ?');
-        $stmt->execute(array($id));
-      
-        $user = $stmt->fetch();
-      if($user != null)
-        return new User(
-            $user['IDUSER'],
-            $user['NAME'],
-            $user['USERNAME'],
-            $user['EMAIL'],
-            $user['PASSWORD'],
-            $user['BIO'] == NULL ? $user['BIO'] :"",
-            $user['TYPE'],
-            $user['PROFILE_PICK'] == NULL? $user['PROFILE_PICK'] :""
-        );
-        return null;
-      }
   }
 
 
