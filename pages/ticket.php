@@ -19,8 +19,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../style.css" rel="stylesheet">
     <link href="../style_user.css" rel="stylesheet">
-    <link href="../style_user_admin.css" rel="stylesheet">
     <link href="../style_profile.css" rel="stylesheet">
+    <link href="../ticketPage.css" rel="stylesheet">
   </head>
 <?php
 
