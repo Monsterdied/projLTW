@@ -9,14 +9,14 @@ hashtagInput.addEventListener('keyup', async (event) => {
   console.log('/api/api_find_tags.php?search=' + encodeURIComponent(hashtagInput.value) + '&ticketId=' + encodeURIComponent(ticketId.value));
   if (event.key === '#') {
     // Fetch list of hashtags from server
-    const response = await fetch('/api/api_find_tags.php?search=' + encodeURIComponent(hashtagInput.value) + '&ticketId=' + encodeURIComponent(ticketId.value));
-
+    const response = await fetch('/api/api_find_tags.php?search='  + '&ticketId=' + encodeURIComponent(ticketId.value));
     const hashtags = await response.json();
+    console.log(hashtags.length);
     // Display autocomplete suggestions
     autocomplete.innerHTML = '';
     hashtags.forEach((tag) => {
       const option = document.createElement('div');
-      option.textContent = tag;
+      option.textContent = tag.name;
       option.addEventListener('click', () => {
         addHashtag(tag);
         autocomplete.innerHTML = '';
@@ -32,7 +32,7 @@ function addHashtag(tag) {
   if (!hashtags.includes(tag)) {
     hashtags.push(tag);
     const tagDiv = document.createElement('div');
-    tagDiv.textContent = tag;
+    tagDiv.textContent = tag.name;
     const removeButton = document.createElement('button');
     removeButton.textContent = 'x';
     removeButton.addEventListener('click', () => {
