@@ -7,6 +7,10 @@
         require_once (__DIR__ . "/../database/connection.php");
         require_once (__DIR__ . "/../database/message.php");
         $db = getDatabaseConnection();
+        if( ! $session->isLoggedIn()){  die(header('Location: /') ); }
+        $ticket = Ticket::getTicketById($db, $_GET['ticketId']);
+        if($ticket->agent->id != Session::getId() && $ticket->client->id != $session->getId() &&  "ADMIN"!= $session->getType()){
+            die(header('Location: /') ); }
         Message::addMessageToDatabase($db,$message,$user_id, $ticketId);
         header("Location: /../pages/ticket_page.php?TicketId=$ticketId");
         exit();

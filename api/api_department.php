@@ -8,7 +8,7 @@
   require_once(__DIR__ . '/../database/departments.php');
 
     $db = getDatabaseConnection();
-    $departements = getAllDepartmentsFromUserId($db, $_GET['user_id']);
+    $departements = Department::getAllDepartmentsFromUserId($db, $_GET['user_id']);
 
   echo json_encode($departements);
 ?>
