@@ -51,10 +51,7 @@
             <span id = "User_Name_err"></span>
             <div class="item2"><input type="text" id="User_Bio" name="User_Bio" <?php echo "value=\"" . $user->bio . "\""; ?>><br><br></div>
             <select name="User_Status" id="User_Status">
-<?php 
 
-
-?>
               <option value=<?= $user->type ?>><?= $user->type ?></option>
               <?php 
                 foreach($user_Status as $status){
@@ -65,9 +62,13 @@
               ?>
             </select>
             <br><br>
+            <div id='departments_changer'>
             <?php foreach($Alldepartments as $department){?>
-              <input type="checkbox" name="departments[]" value=<?= $department->id ?> <?php if(in_array($department,$UserDepartments)){echo "checked";} ?>><?= $department->name ?><br>
+              <input type="checkbox" name="departments[]" value=<?= $department->id ?> <?php if(in_array($department,$UserDepartments)){echo "checked";} ?>>
+              <label for=<?="myCheckbox" . $department->id ?>><?= $department->name ?></label>
+              <br>
             <?php } ?>
+            </div>
             <input type="hidden" name="User_id" value=<?=$user->id?>>
             <?php foreach ($session->getMessages() as $messsage) { ?>
               <article class="<?=$messsage['type']?>">
@@ -79,6 +80,26 @@
         </form>
   </div>    
   <script>
+
+    var select = document.getElementById("User_Status");
+    var checkboxes = document.getElementsByName("departments[]");
+    var departments_changer = document.getElementById("departments_changer");
+    if (select.value === "CLIENT") {
+        departments_changer.style.display = "none";}
+    select.addEventListener("change", function() {
+      if (select.value === "CLIENT") {
+        departments_changer.style.display = "none";
+        for (var i = 0; i < checkboxes.length; i++) {
+          checkboxes[i].checked = false;
+          checkboxes[i].style.display = "none";
+        }
+      } else {
+        departments_changer.style.display = "";
+        for (var i = 0; i < checkboxes.length; i++) {
+          checkboxes[i].style.display = "";
+        }
+      }
+    });
     function validate() {
         var $valid = true;
         document.getElementById("username_err").innerHTML = "";

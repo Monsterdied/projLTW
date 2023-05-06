@@ -35,7 +35,7 @@
     $error = $_GET["error"];
 ?>
 <div class = "profile">
-<form action = "/../actions/action_edit_user.php" method = "post" onSubmit="return validate();">
+          <form action = "/../actions/action_edit_user.php" method = "post" onSubmit="return validate();">
             <div class="item1">Username</div>
             <span id = "username_err"></span>
             <div class="item2"><input type="text" id="username" name="username" <?php echo "value=\""  . $user->username . "\""; ?>><br><br></div>

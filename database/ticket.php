@@ -89,11 +89,9 @@
           return round($delta / 2678400) . ' months ago';
       } elseif ($delta >= 31536000 && $delta < 63072000) {
           return round($delta / 31536000) . ' year ago';
-      } elseif ($delta >= 63072000) {
-          return round($delta / 31536000) . ' years ago';
-      } else {
-          return 'A long time ago';
-      }
+      } else{
+        return 'A long time ago';}
+
   }
 
     function getTicketById( PDO $db ,int $TicketId) {  

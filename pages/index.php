@@ -52,7 +52,7 @@
     </div>
     <section id="Tickets">
           <?php foreach($tickets as $ticket){ ?>
-            <a href=<?="pages/ticket.php?TicketId=" .  $ticket->id ?>>
+            <a href=<?="pages/ticket_page.php?TicketId=" .  $ticket->id ?>>
               <div class="Ticket"> 
 
                 <div class="clientPicture"><img src="https://picsum.photos/600/300?business" alt=""></div>

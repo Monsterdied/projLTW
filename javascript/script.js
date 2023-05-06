@@ -4,7 +4,6 @@
 const searchUser = document.querySelector('#searchUser')
 
 if (searchUser) {
-  console.log('searchUser exists')
     searchUser.addEventListener('input', async function() {
     const search_by_response = document.getElementById("searchUserBy")
     const search_by = search_by_response.options[search_by_response.selectedIndex].text

@@ -48,7 +48,32 @@
             <button type = "submit" name = "change">Change</button></div>  
         </form>
   </div>    
-
+  <script>
+    function validate() {
+      var isValid = true;
+      
+      <?php foreach($departments as $department){?>
+        var name<?= $department->id ?> = document.getElementById("<?= $department->id ?>name").value.trim();
+        var sinopse<?= $department->id ?> = document.getElementById("<?= $department->id ?>sinopse").value.trim();
+        
+        if (name<?= $department->id ?> === "") {
+          document.getElementById("<?= $department->id ?>_err").innerHTML = "Department name cannot be empty";
+          isValid = false;
+        } else {
+          document.getElementById("<?= $department->id ?>_err").innerHTML = "";
+        }
+        
+        if (sinopse<?= $department->id ?> === "") {
+          document.getElementById("<?= $department->id ?>_err_sinopse").innerHTML = "Sinopse cannot be empty";
+          isValid = false;
+        } else {
+          document.getElementById("<?= $department->id ?>_err_sinopse").innerHTML = "";
+        }
+      <?php } ?>
+      
+      return isValid;
+      }
+    </script>
 <?php
   drawFooter($session);
   
