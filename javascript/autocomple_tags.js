@@ -7,9 +7,8 @@ const hashtags = [];
 // Listen for hashtag input
 hashtagInput.addEventListener('keyup', async (event) => {
   console.log('/api/api_find_tags.php?search=' + encodeURIComponent(hashtagInput.value) + '&ticketId=' + encodeURIComponent(ticketId.value));
-  if (event.key === '#') {
     // Fetch list of hashtags from server
-    const response = await fetch('/api/api_find_tags.php?search='  + '&ticketId=' + encodeURIComponent(ticketId.value));
+    const response = await fetch('/api/api_find_tags.php?search='+ hashtagInput.value + '&ticketId=' + encodeURIComponent(ticketId.value));
     const hashtags = await response.json();
     console.log(hashtags.length);
     // Display autocomplete suggestions
@@ -24,7 +23,7 @@ hashtagInput.addEventListener('keyup', async (event) => {
       });
       autocomplete.appendChild(option);
     });
-  }
+  
 });
 
 // Add hashtag to list
