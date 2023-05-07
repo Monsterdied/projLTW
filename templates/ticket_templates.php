@@ -59,9 +59,11 @@
         <?php }else{ ?> 
           <div class = "menssageAgent_Admin">  
         <?php } ?>
-          <div class = "PostedBy">
+          <div class = <?="PostedBy" . $message->user->type?>>
             <?= $message->user->username ?> 
+            
           </div>
+
           <div class = "PostedTime">
             <?= $message->published_time ?>
           </div>
@@ -111,15 +113,21 @@
         for (var i = 0; i < menssages.length; i++) {
           const message = menssages[i]
           const messageEl = document.createElement('div')
-          messageEl.classList.add('message')
+          
+        if(message.user.id == <?=$ticket->client->id?>){
+          messageEl.classList.add("menssageClient")
+        }else{
+          messageEl.classList.add("menssageAgent_Admin")
+        }
+
           messageEl.innerHTML = `
-            <div class="posted-by">
+            <div class="PostedBy${message.user.type}">
               ${message.user.username}
             </div>
-            <div class="posted-time">
+            <div class="PostedTime">
               ${message.published_time}
             </div>
-            <div class="message-comment">
+            <div class="MenssageComment">
               ${message.content}
             </div>
           `;
@@ -132,9 +140,9 @@
       }
       chatBox.addEventListener("scroll", function() {
         scrollmax = chatBox.clientHeight - chatBox.scrollHeight;
-        console.log(chatBox.scrollTop)
-        console.log(scrollmax)
-        if (chatBox.scrollTop === scrollmax) {
+        //console.log(chatBox.scrollTop)
+        //console.log(scrollmax + 5)
+        if (chatBox.scrollTop  === scrollmax +1) {
           loadMessages()
         }
       });

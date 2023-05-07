@@ -49,3 +49,44 @@
     margin-left: 0.5em;
     cursor: pointer;
   }
+  /* info */
+
+  .TicketTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .TicketStatus {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .ProblemPostedBy {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 5px;
+  }
+  
+  .ProblemPostedTime {
+    font-size: 14px;
+    color: #999;
+  }
+
+  /* post by */
+  .PostedBy {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .PostedByCLIENT {
+    color: blue;
+  }
+  
+  .PostedByAGENT {
+    color: green;
+  }
+  
+  .PostedByADMIN {
+    color: red;
+  }
