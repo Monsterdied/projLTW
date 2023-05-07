@@ -1,4 +1,27 @@
-<?php function drawTicketTags($tags,$session , $ticket){?>
+<?php function drawTicketTagsAdminAgent($tags,$session , $ticket){?>
+
+        <div>
+            <label for="hashtags">Hashtags:</label>
+            <input type="text" id="hashtags">
+            <input type="hidden" id="ticketId" value = <?= $ticket->id ?>>
+            <div id="autocomplete"></div>
+            <div id="tag-list">
+            <?php foreach($tags as $tag){ ?>
+              <div class = "Tag">
+                <form action="/../actions/action_remove_tag_from_ticket.php" method="GET">
+                  <input type="hidden" name="ticketId" value=<?=$ticket->id?>>
+                  <input type="hidden" name="tagId" value=<?=$tag->id?>>
+                  <div><button type = "submit">x</button> <?=$tag->name?></div>
+                </form>
+              </div>
+            <?php } ?>
+              
+            </div>
+        </div>
+        <script src="../javascript/autocomple_tags.js"></script>
+      <?php } ?>
+
+<?php function drawTicketTagsClient($tags){?>
   <label for = "tags title">Tags</label>
   <div class = "Tags">
       <?php foreach($tags as $tag){ ?>
@@ -7,18 +30,8 @@
         </div>
         <?php } ?>
       </div>
-      <?php if($ticket->agent->id ===$session->getId() ||  "ADMIN"=== $session->getType()){?>
-        <div>
-            <label for="hashtags">Hashtags:</label>
-            <input type="text" id="hashtags">
-            <input type="hidden" id="ticketId" value = <?= $ticket->id ?>>
-            <div id="autocomplete"></div>
-            <div id="tag-list"></div>
-        </div>
-        <?php } ?>
-        <script src="../javascript/autocomple_tags.js"></script>
-      <?php } ?>
 
+      <?php } ?>
 
 
 <?php function drawTicketInfo($ticket){ ?>
@@ -41,7 +54,11 @@
 <?php function drawTicketMessages($messages,$ticket){ ?>
     <div id="chatbox" style="height: 20em; width: 50em; border: 1px solid #ccc; font: 16px/26px Georgia, Garamond, Serif; overflow: auto; display: flex; flex-direction: column-reverse;">
       <?php foreach($messages as $message){ ?>
-        <div class = "menssage">
+        <?php if( $message->user->id == $ticket->client->id ){ ?>
+          <div class = "menssageClient">
+        <?php }else{ ?> 
+          <div class = "menssageAgent_Admin">  
+        <?php } ?>
           <div class = "PostedBy">
             <?= $message->user->username ?> 
           </div>
@@ -61,7 +78,7 @@
       <input type="text" name="messageBox" id = "messageBox">    
       <input type="hidden" name="ticketId" value=<?=$ticket->id?>>      
       <input type="hidden" name="userId" value=<?=Session::getId()?>>      
-      <button  type = "submit" name = "send menssage">Send</button>
+      <button  type = "submit" name = "send_menssage">Send</button>
     </form>
     <script>
       const chatBox = document.getElementById("chatbox")
@@ -115,6 +132,8 @@
       }
       chatBox.addEventListener("scroll", function() {
         scrollmax = chatBox.clientHeight - chatBox.scrollHeight;
+        console.log(chatBox.scrollTop)
+        console.log(scrollmax)
         if (chatBox.scrollTop === scrollmax) {
           loadMessages()
         }

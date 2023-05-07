@@ -17,15 +17,16 @@ hashtagInput.addEventListener('keyup', async (event) => {
       const option = document.createElement('div');
       option.textContent = tag.name;
       option.addEventListener('click', () => {
-        addHashtag(tag);
+        //addHashtag(tag);
         autocomplete.innerHTML = '';
         hashtagInput.value = '';
+        window.location = "/../actions/action_add_tag_to_ticket.php?ticketId=" + ticketId.value + "&tagId=" + tag.id;
       });
       autocomplete.appendChild(option);
     });
   
 });
-
+/*
 // Add hashtag to list
 function addHashtag(tag) {
   if (!hashtags.includes(tag)) {
@@ -61,4 +62,4 @@ function submitForm() {
     method: 'POST',
     body: formData
   });
-}
+}*/

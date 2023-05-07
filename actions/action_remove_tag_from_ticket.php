@@ -9,6 +9,6 @@
     if($ticket->agent->id !=  $session->getId() &&  "ADMIN"!= $session->getType()){
         die(header('Location: /') ); }
 
-    Tag::addTagToTicket($db, $_GET['ticketId'], $_GET['tagId']);
+    Tag::removeTagToTicket($db, $_GET['ticketId'], $_GET['tagId']);
     header("Location: /../pages/ticket_page.php?TicketId=" .  $ticket->id )
        ?>    

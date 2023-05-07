@@ -1,0 +1,51 @@
+
+  
+  .menssageClient {
+    background-color: #f2f2f2;
+    padding: 1em;
+    border-radius: 1em;
+    margin-bottom: 1em;
+    max-width: 60%;
+    align-self: flex-start;
+  }
+  
+  .menssageAgent_Admin {
+    background-color: #3366cc;
+    color: #fff;
+    padding: 1em;
+    border-radius: 1em;
+    margin-bottom: 1em;
+    max-width: 60%;
+    align-self: flex-end;
+  }
+  
+  .PostedBy {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+  
+  .PostedTime {
+    font-size: 0.8em;
+    margin-bottom: 0.5em;
+  }
+  
+  .MenssageComment {
+    margin-bottom: 0.5em;
+  }
+  
+  #messageBox {
+    padding: 0.5em;
+    border-radius: 0.5em;
+    border: 1px solid #ccc;
+    width: 50%;
+  }
+  
+.send_menssage {
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    border: none;
+    background-color: #3366cc;
+    color: #fff;
+    margin-left: 0.5em;
+    cursor: pointer;
+  }

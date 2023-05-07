@@ -53,9 +53,9 @@ class Tag {
         }
         function searchTagsByName(PDO $db, string $name, string $ticketId) : array {
             $stmt = $db->prepare('SELECT DISTINCT t.* FROM TAGS t 
-                                  LEFT JOIN TAG_TICKET tt ON t.IDTAG = tt.IDTAG
-                                  WHERE t.HASTAG_NAME LIKE ? AND tt.IDTICKET != ?');
-            $stmt->execute(array($name.'%', $ticketId));
+                                  LEFT JOIN TAG_TICKET tt ON t.IDTAG = tt.IDTAG AND tt.IDTICKET = ?
+                                  WHERE t.HASTAG_NAME LIKE ? AND tt.IDTICKET IS NULL');
+            $stmt->execute(array($ticketId, $name.'%'));
             $result = array();
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $result[] = new Tag($row['IDTAG'], $row['HASTAG_NAME']);
@@ -65,6 +65,10 @@ class Tag {
         function addTagToTicket(PDO $db, int $ticketId, int $tagId) {
             $stmt = $db->prepare('INSERT INTO TAG_TICKET (IDTAG, IDTICKET) VALUES (?, ?)');
             $stmt->execute(array($tagId, $ticketId));
+        }
+        function removeTagToTicket(PDO $db, int $ticketId, int $tagId){
+            $stmt = $db->prepare('DELETE FROM TAG_TICKET WHERE IDTICKET = ? AND IDTAG = ?');
+            $stmt->execute(array($ticketId, $tagId));
         }
 
     }

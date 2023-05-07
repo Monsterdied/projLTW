@@ -23,6 +23,7 @@
     <link href="../style_user.css" rel="stylesheet">
     <link href="../style_profile.css" rel="stylesheet">
     <link href="../ticketPage.css" rel="stylesheet">
+    <link href="../ticket_chat.css" rel="stylesheet">
   </head>
 <?php
 
@@ -44,7 +45,11 @@
 <div class = "Ticket">  
   <div class = "TicketSummary">
     <?php drawTicketInfo($ticket) ?>
-    <?php drawTicketTags($tags , $session , $ticket) ?>
+    <?php 
+    if($ticket->agent->id == Session::getId() || "ADMIN"== Session::getType()){
+      drawTicketTagsAdminAgent($tags,$session , $ticket);
+    }else{
+    drawTicketTagsClient($tags ) ;}?>
   </div>
   <?php drawTicketMessages($messages,$ticket)?>
   
