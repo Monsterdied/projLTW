@@ -16,10 +16,10 @@
     <title>Admin</title>    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../style.css" rel="stylesheet">
-    <link href="../style_user.css" rel="stylesheet">
-    <link href="../style_user_admin.css" rel="stylesheet">
-    <link href="../style_profile.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/style_user.css" rel="stylesheet">
+    <link href="../css/style_user_admin.css" rel="stylesheet">
+    <link href="../css/style_profile.css" rel="stylesheet">
   </head>
 <?php
 

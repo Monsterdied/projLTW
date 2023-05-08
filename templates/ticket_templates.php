@@ -1,10 +1,13 @@
 <?php function drawTicketTagsAdminAgent($tags,$session , $ticket){?>
 
-        <div>
+        <div class= "tag-container">
             <label for="hashtags">Hashtags:</label>
-            <input type="text" id="hashtags">
-            <input type="hidden" id="ticketId" value = <?= $ticket->id ?>>
-            <div id="autocomplete"></div>
+            <div class="tags-input">
+              <input type="text" id="hashtags">
+              <input type="hidden" id="ticketId" value = <?= $ticket->id ?>>
+              <div id="autocomplete"></div>
+            </div>
+
             <div id="tag-list">
             <?php foreach($tags as $tag){ ?>
               <div class = "Tag">
@@ -19,6 +22,69 @@
             </div>
         </div>
         <script src="../javascript/autocomple_tags.js"></script>
+        <style>
+    .tag-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .tags-input {
+      position: relative;
+    }
+
+    .tags-input input {
+      width: 20%;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .tags-input #autocomplete {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 1;
+      width: 20%;
+      background-color: #fff;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .tags-input #autocomplete .autocomplete-option:hover{
+      background-color: #666;
+      color:red;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .Tag {
+      display: flex;
+      width: 20%;
+      align-items: center;
+      background-color: #ddd;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+
+    .tag button {
+      margin-left: 10px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .tag button:hover {
+      color: #000;
+    }
+  </style>
       <?php } ?>
 
 <?php function drawTicketTagsClient($tags){?>

@@ -6,6 +6,15 @@ const hashtags = [];
 
 // Listen for hashtag input
 hashtagInput.addEventListener('keyup', async (event) => {
+  activateAutocomplete();
+});
+
+// Listen for click on hashtag input
+hashtagInput.addEventListener('click', async (event) => {
+  activateAutocomplete();
+});
+
+async function activateAutocomplete() {
   console.log('/api/api_find_tags.php?search=' + encodeURIComponent(hashtagInput.value) + '&ticketId=' + encodeURIComponent(ticketId.value));
     // Fetch list of hashtags from server
     const response = await fetch('/api/api_find_tags.php?search='+ hashtagInput.value + '&ticketId=' + encodeURIComponent(ticketId.value));
@@ -15,6 +24,7 @@ hashtagInput.addEventListener('keyup', async (event) => {
     autocomplete.innerHTML = '';
     hashtags.forEach((tag) => {
       const option = document.createElement('div');
+      option.classList = 'autocomplete-option'
       option.textContent = tag.name;
       option.addEventListener('click', () => {
         //addHashtag(tag);
@@ -25,7 +35,7 @@ hashtagInput.addEventListener('keyup', async (event) => {
       autocomplete.appendChild(option);
     });
   
-});
+}
 /*
 // Add hashtag to list
 function addHashtag(tag) {
